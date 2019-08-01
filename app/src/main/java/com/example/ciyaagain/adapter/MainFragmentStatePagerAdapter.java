@@ -7,6 +7,9 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.ciyaagain.ui.CommunityEventsFragment;
 import com.example.ciyaagain.ui.DashBoardFragment;
 
+/**
+ * Main navigation adapter to navigate between main page tabs
+ */
 public class MainFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
 
     public MainFragmentStatePagerAdapter(FragmentManager fm) {

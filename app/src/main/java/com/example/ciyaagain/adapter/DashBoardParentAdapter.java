@@ -21,7 +21,9 @@ import java.util.List;
 import static com.example.ciyaagain.data.CommunityEventType.DISCOVER;
 import static com.example.ciyaagain.data.CommunityEventType.UPCOMING;
 
-
+/**
+ * Main Dashboard Adapter that displays the NextUp, Upcoming, and Discover Sections
+ */
 public class DashBoardParentAdapter extends RecyclerView.Adapter<EventViewHolder> {
 
     List<DashBoardItem> dashBoardItems = new ArrayList<>();

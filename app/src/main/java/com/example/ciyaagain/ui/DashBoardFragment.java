@@ -14,15 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ciyaagain.R;
 import com.example.ciyaagain.adapter.DashBoardParentAdapter;
+import com.example.ciyaagain.component.dashboard.DashBoardContract;
+import com.example.ciyaagain.component.dashboard.DashBoardInjector;
+import com.example.ciyaagain.component.dashboard.DashBoardInjectorImpl;
+import com.example.ciyaagain.component.dashboard.DashBoardPresenter;
 import com.example.ciyaagain.data.dashboard.DashBoard;
+import com.example.ciyaagain.data.dashboard.DashBoardItem;
 import com.example.ciyaagain.db.AssetReader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.util.List;
 
-public class DashBoardFragment extends Fragment {
+public class DashBoardFragment extends Fragment implements DashBoardContract.View {
     RecyclerView dashBoardReyclerView;
     DashBoardParentAdapter adapter;
+    DashBoardInjector dashBoardInjector;
+    DashBoardContract.Presenter dashBoardPresenter;
 
     private static DashBoardFragment INSTANCE;
 
@@ -31,6 +39,13 @@ public class DashBoardFragment extends Fragment {
             INSTANCE = new DashBoardFragment();
         }
         return INSTANCE;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dashBoardInjector = new DashBoardInjectorImpl(getContext());
+        dashBoardPresenter = dashBoardInjector.presenter(this);
     }
 
     @Nullable
@@ -43,22 +58,22 @@ public class DashBoardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         dashBoardReyclerView = view.findViewById(R.id.rv_dash_board);
-
         adapter = new DashBoardParentAdapter();
         dashBoardReyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         dashBoardReyclerView.setAdapter(adapter);
 
-        AssetReader assetReader = new AssetReader(getContext());
+        dashBoardPresenter.loadDashBoard();
 
-        String result = assetReader.getFileJSON("dashboard.json");
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            DashBoard dashBoard = objectMapper.readValue(result, DashBoard.class);
-            adapter.setDashBoardItems(dashBoard.getDashBoardItemList());
-        } catch (IOException e) {
-            Log.d("CLOWN", "Exception " + e.getMessage());
-            e.printStackTrace();
-        }
+    }
 
+    @Override
+    public void onDashBoardLoaded(List<DashBoardItem> dashBoardItems) {
+        adapter.setDashBoardItems(dashBoardItems);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dashBoardPresenter.onDestroy();
     }
 }

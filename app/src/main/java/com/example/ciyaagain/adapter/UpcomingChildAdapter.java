@@ -16,6 +16,9 @@ import com.example.ciyaagain.data.events.UpcomingEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Nested recyclerview adapter for upcomings section in dashboard
+ */
 public class UpcomingChildAdapter extends RecyclerView.Adapter<UpcomingChildAdapter.UpcomingChildViewHolder> {
     List<UpcomingEvent> upcomingEvents = new ArrayList<>();
 

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Top level response body for the dashboard json
+ */
 public class DashBoard implements Serializable {
 
     private NextUpDashItem nextUp = new NextUpDashItem();
@@ -42,4 +45,8 @@ public class DashBoard implements Serializable {
         return list;
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

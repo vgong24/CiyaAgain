@@ -1,0 +1,69 @@
+{
+  "nextUp": {
+    "eventList": [
+      {
+        "id": 0,
+        "time": 1564340671362,
+        "title": "Basketball at park",
+        "coord": {
+          "lat": 0.0,
+          "lon": 0.0
+        },
+        "attendance": 4,
+        "maxAttendance": 8
+      }
+    ]
+  },
+  "upcoming": {
+    "eventList": [
+      {
+        "id": 1,
+        "title": "BBQ",
+        "time": 1564340671362,
+        "coord": {
+          "lat": 0.0,
+          "lon": 0.0
+        },
+        "attendance": 4,
+        "maxAttendance": 8
+      },
+      {
+        "id": 2,
+        "title": "BBALL",
+        "time": 1564340771362,
+        "coord": {
+          "lat": 0.0,
+          "lon": 0.0
+        },
+        "attendance": 4,
+        "maxAttendance": 8
+      },
+      {
+        "id": 3,
+        "title": "Party",
+        "time": 154840771362,
+        "coord": {
+          "lat": 0.0,
+          "lon": 0.0
+        },
+        "attendance": 4,
+        "maxAttendance": 8
+      }
+    ]
+  },
+  "discover": {
+    "eventList": [
+      {
+        "id": 4,
+        "title": "Maplestory",
+        "time": 1564340671362,
+        "coord": {
+          "lat": 0.0,
+          "lon": 0.0
+        },
+        "attendance": 4,
+        "maxAttendance": 8
+      }
+    ]
+  }
+}
